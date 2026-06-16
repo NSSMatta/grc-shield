@@ -2,7 +2,7 @@
 
 **Governing the AI Agents That Govern Your Compliance**
 
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![License: CC0 1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![Framework: OWASP Agentic Top 10](https://img.shields.io/badge/Framework-OWASP%20Agentic%20Top%2010-red)](https://owasp.org)
 [![Standard: ISO 42001:2023](https://img.shields.io/badge/Standard-ISO%2042001%3A2023-blue)](https://www.iso.org/standard/81230.html)
 [![Status: Open for Review](https://img.shields.io/badge/Status-Open%20for%20Community%20Review-green)]()
@@ -159,7 +159,7 @@ Full citations in each scenario document.
 
 ## License
 
-This framework is published under **Creative Commons CC-BY 4.0** — cite it, build on it, use it commercially, adapt it. Just attribute the source.
+This framework is published under **Creative Commons CC0 1.0 Universal** — cite it, build on it, use it commercially, adapt it. Just attribute the source.
 
 This is not a product. It is not affiliated with OWASP, ISO, ServiceNow, MetricStream, or any GRC platform vendor. All attack scenarios are theoretical threat models for defensive research purposes.
 
