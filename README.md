@@ -29,7 +29,7 @@ The gap between AI deployment and AI accountability in GRC is real, measurable, 
 
 GRC-Shield is an **open-source framework** that does three things no existing tool does together:
 
-1. **Maps OWASP Agentic Top 10 threats (ASI01–ASI10) to specific GRC attack scenarios** — what goal hijacking looks like when the agent is managing your ServiceNow risk register, not generating code
+1. **Maps all ten OWASP Agentic Top 10 threats (ASI01–ASI10) to specific GRC attack scenarios** — what goal hijacking looks like when the agent is managing your ServiceNow risk register, not generating code
 2. **Maps ISO/IEC 42001:2023 controls to each threat** — the AI governance standard already requires most of these controls; organisations just haven't applied them to their GRC agents
 3. **Provides a detection engine** — open-source Python middleware that wraps GRC agent actions with data provenance tagging, behavioural anomaly detection, and immutable reasoning chain audit logs
 
@@ -39,40 +39,60 @@ GRC-Shield is an **open-source framework** that does three things no existing to
 
 ```
 grc-shield/
-│
 ├── docs/
-│   ├── ASI01_Goal_Hijack.md          ← Attack taxonomy + ISO 42001 mapping (COMPLETE)
-│   ├── ASI02_Tool_Misuse.md          ← Coming
-│   ├── ASI03_Identity_Abuse.md       ← Coming
-│   └── ...
+│   ├── ASI01_Goal_Hijack.md               ← Attack taxonomy + ISO 42001 mapping (COMPLETE)
+│   ├── ASI02_Tool_Misuse.md               ← Tool chain attack + GS-04 circuit breaker
+│   ├── ASI03_Identity_Privilege_Abuse.md  ← Credential abuse + GS-05 scope monitor
+│   ├── ASI04_Supply_Chain.md              ← Plugin poisoning + GS-06 hash verifier
+│   ├── ASI05_Code_Execution.md            ← RCE via codegen + GS-07 static analysis
+│   ├── ASI06_Memory_Poisoning.md          ← RAG store attack + GS-08 retrieval gate
+│   ├── ASI07_Inter_Agent_Communication.md ← Message spoofing + GS-09 HMAC signing
+│   ├── ASI08_Cascading_Failures.md        ← Pipeline cascade + GS-10 circuit breaker
+│   ├── ASI09_Trust_Exploitation.md        ← Fraudulent output + GS-11 citation check
+│   └── ASI10_Rogue_Agents.md              ← Behavioral drift + GS-12 drift monitor
 │
 ├── detection-engine/
-│   ├── grc_shield/
-│   │   ├── data_provenance.py        ← GS-01: Trust tier enforcement
-│   │   ├── anomaly_detector.py       ← GS-02: Behavioural anomaly detection
-│   │   ├── audit_log.py             ← GS-03: Immutable reasoning chain log
-│   │   └── __init__.py
-│   ├── tests/
-│   └── requirements.txt
+│   ├── run_all_tests.py                   ← Runs all 12 controls, verifies all pass
+│   └── grc_shield/
+│       ├── data_provenance.py             ← GS-01: Trust tier tagging
+│       ├── anomaly_detector.py            ← GS-02: Behavioral anomaly detection
+│       ├── audit_log.py                   ← GS-03: Immutable SHA-256 audit log
+│       ├── gs04_tool_sequencer.py         ← GS-04: Unauthorized tool chain blocker
+│       ├── gs05_privilege_scope.py        ← GS-05: Workflow-scoped permission gate
+│       ├── gs06_supply_chain_integrity.py ← GS-06: Plugin descriptor hash check
+│       ├── gs07_code_execution_monitor.py ← GS-07: Generated code static analysis
+│       ├── gs08_rag_integrity.py          ← GS-08: RAG retrieval trust gate
+│       ├── gs09_message_auth.py           ← GS-09: HMAC inter-agent message signing
+│       ├── gs10_cascade_breaker.py        ← GS-10: Statistical cascade quarantine
+│       ├── gs11_output_integrity.py       ← GS-11: Citation + urgency verifier
+│       └── gs12_rogue_agent_monitor.py    ← GS-12: Rolling drift detector
 │
-├── demo/
-│   └── langgraph_attack_demo/        ← LangGraph agent: attack + detection (Coming)
-│
-├── iso42001/
-│   └── control_mapping_template.md  ← SoA template for GRC AI deployments
-│
-└── README.md
+└── demo/
+    ├── langgraph_attack_demo/             ← ASI01 live simulation (Claude API)
+    └── asi02_tool_misuse_demo/            ← ASI02 live simulation (Claude API)
 ```
 
 ---
 
 ## Current Status
 
-| Layer | What | Status |
-|-------|------|--------|
-| **Layer 1** | ASI01 attack taxonomy + ISO 42001 mapping | ✅ Complete — open for review |
-| **Layer 2** | Python detection engine (GS-01 to GS-03) | 🔄 In development |
-| **Layer 3** | LangGraph attack + detection demo | 🔄 In development |
+| Scenario | What | Status |
+|---|---|---|
+| ASI01 — Agent Goal Hijack | Threat model + ISO 42001 mapping + GS-01, GS-02, GS-03 + live LangGraph demo | ✅ Complete |
+| ASI02 — Tool Misuse and Exploitation | Threat model + GS-04 Tool Sequencer Monitor + live simulation | ✅ Complete |
+| ASI03 — Identity and Privilege Abuse | Threat model + GS-05 Privilege Scope Monitor | ✅ Complete |
+| ASI04 — Agentic Supply Chain Vulnerabilities | Threat model + GS-06 Supply Chain Integrity Verifier | ✅ Complete |
+| ASI05 — Unexpected Code Execution | Threat model + GS-07 Code Execution Sandbox Monitor | ✅ Complete |
+| ASI06 — Memory and Context Poisoning | Threat model + GS-08 RAG Integrity Monitor | ✅ Complete |
+| ASI07 — Insecure Inter-Agent Communication | Threat model + GS-09 Inter-Agent Message Authentication | ✅ Complete |
+| ASI08 — Cascading Failures | Threat model + GS-10 Cascade Circuit Breaker | ✅ Complete |
+| ASI09 — Human-Agent Trust Exploitation | Threat model + GS-11 Output Integrity Verifier | ✅ Complete |
+| ASI10 — Rogue Agents | Threat model + GS-12 Rogue Agent Behavioral Monitor | ✅ Complete |
+| Governance Framework Mapping | ISO 27001:2022, SOC 2, PCI DSS v4.0, HIPAA | 🔜 Next phase |
+| Real Platform Validation | Live testing against ServiceNow IRM, MetricStream, RSA Archer | 🔜 Seeking collaborations |
+
+All ten OWASP Agentic Top 10:2026 scenarios mapped. All detection controls verified and passing.
+Run `cd detection-engine && python run_all_tests.py` to verify all 12 controls locally.
 
 ---
 
@@ -83,7 +103,7 @@ The first complete attack scenario document covers:
 - **What OWASP ASI01 actually looks like** inside ServiceNow IRM, MetricStream, and RSA Archer
 - **Three specific attack scenarios** with full attack chains:
   - Scenario A: The Poisoned Evidence Attachment
-  - Scenario B: The Regulatory Feed Poisoning  
+  - Scenario B: The Regulatory Feed Poisoning
   - Scenario C: The Vendor Questionnaire Escalation
 - **Why current GRC platform controls don't stop these attacks** (RBAC, approval workflows, audit trails — all insufficient)
 - **ISO 42001 clause-by-clause mapping** — Cl.6.1.2, Cl.6.1.3, Cl.8.4, Annex A.6, Annex A.8, Cl.9 — with current gap assessment for each
@@ -93,9 +113,9 @@ The first complete attack scenario document covers:
 
 ---
 
-## Layer 2 — Detection Engine (Preview)
+## Detection Engine
 
-Three Python controls that wrap any GRC agent deployment:
+Twelve Python controls that wrap any GRC agent deployment:
 
 ```python
 from grc_shield import DataProvenanceTagger, AnomalyDetector, GRCAuditLog
@@ -112,6 +132,12 @@ flags = detector.check(agent_action, recent_actions, platform_state)
 # GS-03: Write an immutable, signed record of every decision
 audit = GRCAuditLog(db_path="grc_shield_audit.db")
 audit.record(decision_record)
+```
+
+Run all controls locally:
+```bash
+cd detection-engine
+python run_all_tests.py
 ```
 
 ---
@@ -165,4 +191,4 @@ This is not a product. It is not affiliated with OWASP, ISO, ServiceNow, MetricS
 
 ---
 
-*GRC-Shield v0.1 · June 2026 · Open for community review*
+*GRC-Shield v0.2 · June 2026 · Open for community review*
