@@ -32,7 +32,7 @@ import anthropic
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../detection-engine"))
 
 from grc_shield.gs04_tool_sequencer import ToolSequencerMonitor, SequenceVerdict
-from grc_shield.gs03_audit_log import AuditLogger  # From ASI01 — reused here
+from grc_shield.audit_log import GRCAuditLog
 
 
 # ── GRC Platform Tool Definitions ─────────────────────────────────────────────
