@@ -191,4 +191,4 @@ This is not a product. It is not affiliated with OWASP, ISO, ServiceNow, MetricS
 
 ---
 
-*GRC-Shield v0.2 · June 2026 · Open for community review*
+GRC-Shield v3.0 · July 2026 · Open for community review
