@@ -88,7 +88,7 @@ grc-shield/
 | ASI08 — Cascading Failures | Threat model + GS-10 Cascade Circuit Breaker | ✅ Complete |
 | ASI09 — Human-Agent Trust Exploitation | Threat model + GS-11 Output Integrity Verifier | ✅ Complete |
 | ASI10 — Rogue Agents | Threat model + GS-12 Rogue Agent Behavioral Monitor | ✅ Complete |
-| Governance Framework Mapping | ISO 27001:2022, SOC 2, PCI DSS v4.0, HIPAA | 🔜 Next phase |
+| Governance Framework Mapping | ISO 42001:2023, ISO 27001:2022, SOC 2, PCI DSS v4.0, HIPAA, EU AI Act, DORA, NIST AI RMF | ✅ Complete |
 | Real Platform Validation | Live testing against ServiceNow IRM, MetricStream, RSA Archer | 🔜 Seeking collaborations |
 
 All ten OWASP Agentic Top 10:2026 scenarios mapped. All detection controls verified and passing.
